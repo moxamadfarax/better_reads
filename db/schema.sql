@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS bookly_db;
+DROP DATABASE IF EXISTS betterreads;
 
-CREATE DATABASE bookly_db;
+CREATE DATABASE betterreads;
