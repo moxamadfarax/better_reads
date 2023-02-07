@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS bookly_db;
+
+CREATE DATABASE bookly_db;
