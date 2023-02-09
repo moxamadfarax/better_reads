@@ -1,3 +1,2 @@
-DROP DATABASE IF EXISTS betterreads;
-
-CREATE DATABASE betterreads;
+DROP DATABASE IF EXISTS betterReads;
+CREATE DATABASE betterReads;
