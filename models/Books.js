@@ -5,16 +5,15 @@ class Books extends Model {}
 
 Books.init(
   {
-    have_read: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      primaryKey: true,
-    },
     books_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    have_read: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
     book_issn: {
       type: DataTypes.INTEGER,
