@@ -5,8 +5,9 @@ async function getBooks(query) {
   const response = await fetch(endpoint);
   const data = await response.json();
 
+  console.log(data);
   for (let item of data.items) {
-    console.log(item.volumeInfo.title);
+    console.log(item.volumeInfo.title, item.volumeInfo.authors);
   }
   for (let item of data.items) {
     console.log(item.volumeInfo.title);
@@ -19,6 +20,12 @@ async function getBooks(query) {
       console.log("No Thumbnail Available");
     }
   }
+}
+
+function userSearch(event) {
+  event.preventDefault();
+  let searchInput = document.getElementById("search-request").value;
+  getBooks(searchInput);
 }
 
 getBooks("JavaScript").then(() => {
