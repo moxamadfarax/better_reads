@@ -1,4 +1,6 @@
-async function getBooks(query) {
+var btn = document.getElementById("submitButton");
+
+async function getData(query) {
   const apiKey = "AIzaSyD78Ix8MA22TZKPmBeVZpTmWtIzQPcPxwY";
   const maxResults = 40;
   const endpoint = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&key=${apiKey}`;
@@ -21,6 +23,9 @@ async function getBooks(query) {
   }
 }
 
-getBooks("JavaScript").then(() => {
-  console.log("Finished retrieving book titles");
+btn.addEventListener("click", function () {
+  var inputValue = document.getElementById("inputField").value;
+  getData(inputValue).then(() => {
+    console.log("Finished retrieving book titles");
+  });
 });
