@@ -8,10 +8,6 @@ async function getData(query) {
   const data = await response.json();
 
   for (let item of data.items) {
-    console.log(item.volumeInfo.title);
-  }
-  for (let item of data.items) {
-    console.log(item.volumeInfo.title);
     if (
       item.volumeInfo.hasOwnProperty("imageLinks") &&
       item.volumeInfo.imageLinks.hasOwnProperty("thumbnail")
@@ -21,11 +17,31 @@ async function getData(query) {
       console.log("No Thumbnail Available");
     }
   }
+  const resultsContainer = document.getElementById("resultsContainer");
+  resultsContainer.innerHTML = "";
+
+  for (let item of data.items) {
+    if (
+      item.volumeInfo.hasOwnProperty("imageLinks") &&
+      item.volumeInfo.imageLinks.hasOwnProperty("thumbnail")
+    ) {
+      const card = document.createElement("div");
+      card.setAttribute("class", "card");
+
+      const coverImage = document.createElement("img");
+      coverImage.setAttribute("src", item.volumeInfo.imageLinks.thumbnail);
+      coverImage.setAttribute("alt", item.volumeInfo.title);
+      card.appendChild(coverImage);
+
+      resultsContainer.appendChild(card);
+    }
+  }
 }
 
 btn.addEventListener("click", function () {
+  console.clear();
   var inputValue = document.getElementById("inputField").value;
   getData(inputValue).then(() => {
-    console.log("Finished retrieving book titles");
+    console.log("Finished retrieving book thumbnails");
   });
 });
