@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const Users = require('../../models/Users');
-
+const { Users } = require('../../models');
+/*
 router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -16,7 +16,9 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+*/
 
+//move to homeRoutes
 router.get('/:id', async (req, res) => {
   try {
     // Get all projects and JOIN with user data

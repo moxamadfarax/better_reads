@@ -5,7 +5,7 @@ const apiRoutes = require("./api");
 router.use("/", homeRoutes);
 router.use("/api", apiRoutes);
 
-router.use((req, res) => {
+router.use("*", (req, res) => {
   res.send("<h1>Wrong Route, try again!</h1>");
 });
 

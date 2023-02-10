@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Books = require('../../models/Books');
+const { Books } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -10,11 +10,12 @@ router.get('/', async (req, res) => {
     const books = booksData.map((books) => books.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-
+/*
     res.render('homepage', { 
       Books, 
       logged_in: req.session.logged_in 
     });
+*/
   } catch (err) {
     res.status(500).json(err);
   }

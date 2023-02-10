@@ -4,7 +4,7 @@ const { Books, Users } = require("../models");
 router.get('/', async (req, res) => {
     try {
       // Get all projects and JOIN with user data
-      const projectData = await Project.findAll({
+      const booksData = await Books.findAll({
         include: [
           {
             model: User,
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
       });
   
       // Serialize data so the template can read it
-      const projects = projectData.map((project) => project.get({ plain: true }));
+      const books = projectData.map((project) => project.get({ plain: true }));
   
       // Pass serialized data and session flag into template
       res.render('homepage', { 
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {
-      res.redirect('/profile');
+      res.redirect('/');
       return;
     }
   
