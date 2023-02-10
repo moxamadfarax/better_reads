@@ -1,2 +1,17 @@
 {{#each projects as |project| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <a href="/project/{{Book.id}}"</a>
+    </h2>
+    <p>
+      <span>{{book_list}}</span>
+    </p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{Book.description}}
+    </p>
+  </div>
+</div>
 {{/each}}
