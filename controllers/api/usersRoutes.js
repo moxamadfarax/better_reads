@@ -1,23 +1,5 @@
 const router = require('express').Router();
 const { Users } = require('../../models');
-/*
-router.get('/', async (req, res) => {
-  try {
-    // Get all projects and JOIN with user data
-    const usersData = await Users.findAll();
-
-    // Serialize data so the template can read it
-    const users = usersData.map((user) => user.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-
-    res.render('allusers', users)
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-*/
-
 
 
 
