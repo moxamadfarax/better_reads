@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 */
 
 //move to homeRoutes
+/*
 router.get('/:id', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -34,6 +35,7 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+*/
 
 router.post('/login', async (req, res) => {
   try {
