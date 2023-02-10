@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users } = require('../models');
+const { Users } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
@@ -27,4 +27,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-module.exports - router;
+module.exports = router;
