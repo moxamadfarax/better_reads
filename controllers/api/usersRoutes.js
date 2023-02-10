@@ -18,22 +18,8 @@ router.get('/', async (req, res) => {
 });
 */
 
-//move to homeRoutes
-router.get('/:id', async (req, res) => {
-  try {
-    // Get all projects and JOIN with user data
-    const usersData = await Users.findByPk(req.params.id);
 
-    // Serialize data so the template can read it
-    const user = usersData.get({ plain: true });
 
-    // Pass serialized data and session flag into template
-
-    res.render('userpage', user)
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 router.post('/login', async (req, res) => {
   try {
