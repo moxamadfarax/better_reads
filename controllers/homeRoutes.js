@@ -2,7 +2,9 @@ const router = require("express").Router();
 const { Books, Users } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
+
+// Routes the main page URL to the login page
+router.get("/", withAuth, async (req, res) => {
   // Get all books and JOIN with user data
   try {
     // const booksData = await Books.findAll({
@@ -18,7 +20,7 @@ router.get("/", async (req, res) => {
     // const books = booksData.map((project) => project.get({ plain: true }));
 
     //  Pass serialized data and session flag into template
-    res.render("login");
+    res.render("homepage");
   } catch (err) {
     res.status(500).json(err);
   }
@@ -46,15 +48,15 @@ router.get("/homepage", async (req, res) => {
   }
 });
 
-// router.get("/login", (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.logged_in) {
-//     res.redirect("/");
-//     return;
-//   }
+router.get("/login", (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect("/");
+    return;
+  }
 
-//   res.render("login");
-// });
+  res.render("login");
+});
 
 router.get("users/:id", async (req, res) => {
   try {
