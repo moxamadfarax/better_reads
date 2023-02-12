@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
   // const books = booksData.map((project) => project.get({ plain: true }));
 
   // Pass serialized data and session flag into template
-  res.render("login");
+  res.render("layouts/main");
 });
 
 // router.get("/login", (req, res) => {
