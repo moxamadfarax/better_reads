@@ -28,18 +28,18 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/homepage", async (req, res) => {
   // Get all books and JOIN with user data
-  try {
-    // const booksData = await Books.findAll({
-    //   include: [
-    //     {
-    //       model: Users,
-    //       attributes: ["name"],
-    //     },
-    //   ],
-    // });
+   try {
+  //   const booksData = await Books.findAll({
+  //     include: [
+  //       {
+  //         model: Users,
+  //         attributes: ["name"],
+  //       },
+  //      ],
+  //    });
 
-    // // Serialize data so the template can read it
-    // const books = booksData.map((project) => project.get({ plain: true }));
+  //   // // Serialize data so the template can read it
+  //   const books = booksData.map((project) => project.get({ plain: true }));
 
     //  Pass serialized data and session flag into template
     res.render("homepage");
