@@ -25,7 +25,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// Find all books save by logged-in user
+// Find all books saved by logged-in user
 router.get("/user/books", withAuth, async (req, res) => {
   // Get all books and JOIN with user data
   try {
@@ -51,16 +51,21 @@ router.get("/user/books", withAuth, async (req, res) => {
 });
 
 
-router.get("users/:id", async (req, res) => {
+router.get("/profile", withAuth, async (req, res) => {
   try {
-    const usersData = await Users.findByPk(req.params.user_id);
+    const usersData = await Users.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Books }],
+    });
 
     // Serialize data so the template can read it
     const user = usersData.get({ plain: true });
 
-    // Pass serialized data and session flag into template
+    res.render("profile", {
+      ...user,
+      logged_in: true
+    });
 
-    res.render("userpage", user);
   } catch (err) {
     res.status(500).json(err);
   }
