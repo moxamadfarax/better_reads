@@ -20,6 +20,10 @@ Users.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    user_email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
