@@ -12,11 +12,11 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", withAuth, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const bookData = await Books.destroy({
       where: {
-        books_id: req.params.id,
+        books_id: req.params.books_id,
         user_id: req.session.user_id,
       },
     });
