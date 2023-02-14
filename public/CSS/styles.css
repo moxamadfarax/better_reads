@@ -1,8 +1,12 @@
+* {
+  background-color: rgb(65, 64, 64);
+}
 input[type="text"] {
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
-  border: 1px solid gray;
+  border: 1px solid #0dcaf0;
+  color: white;
   width: 300px;
   margin-bottom: 20px;
 }
@@ -29,3 +33,14 @@ button {
   height: 100%;
   object-fit: cover;
 }
+.form {
+  position: relative;
+  text-align: center;
+  
+}
+.betterbtn {
+  position: relative;
+  text-align: center;
+  
+}
+
