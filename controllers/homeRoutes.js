@@ -35,7 +35,7 @@ router.get("/user/books", withAuth, async (req, res) => {
       include: [
         {
           model: Users,
-          attributes: ["name"],
+          attributes: ["user_name"],
         },
 
         // Do we need a where clause here to find which books are saved?
