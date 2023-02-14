@@ -16,7 +16,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const bookData = await Books.destroy({
       where: {
-        books_id: req.params.books_id,
+        books_id: req.params.id,
       },
     });
 
