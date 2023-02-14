@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Document</title>
+  </head>
+  <body style="padding-top: 70px">
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <a class="navbar-brand" href="#">Home</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Books</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <div class="input-group" style="width: 50%; margin: 0 auto">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search book by Title, Author, or ISBN Number"
+          id="inputField"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" id="submitButton" type="submit ">
+            Search
+          </button>
+        </div>
+      </div>
+      <br /><br />
+    </div>
+    <div class="container">
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+        id="resultsContainer"
+      >
+        <!-- generated book cards will be added here -->
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary" id="previousBtn">
+          Previous
+        </button>
+        <button type="button" class="btn btn-secondary" id="nextBtn">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <script src="/testAPI.js"></script>
+  </body>
+</html>
