@@ -38,11 +38,11 @@ router.get("/api/books", async (req, res) => {
       ],
     });
 
-    // // Serialize data so the template can read it
+     // Serialize data so the template can read it
     const books = booksData.map((books) => books.get({ plain: true }));
 
     //  Pass serialized data and session flag into template
-    res.render("savedBooks", books);
+    res.render("profile", { books });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -66,5 +66,6 @@ router.get("/profile", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
