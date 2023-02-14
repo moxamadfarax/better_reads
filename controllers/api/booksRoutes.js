@@ -17,7 +17,6 @@ router.delete("/:id", async (req, res) => {
     const bookData = await Books.destroy({
       where: {
         books_id: req.params.books_id,
-        user_id: req.session.user_id,
       },
     });
 
