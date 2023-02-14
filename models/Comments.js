@@ -19,7 +19,7 @@ Comments.init(
     books_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: "books",
+            model: "Books",
             key: "books_id",
         },
     },

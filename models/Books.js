@@ -29,7 +29,7 @@ Books.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "users",
+        model: "Users",
         key: "user_id",
       },
     },
