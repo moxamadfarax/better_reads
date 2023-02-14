@@ -26,6 +26,13 @@ Books.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Users",
+        key: "user_id",
+      },
+    },
   },
   {
     sequelize,

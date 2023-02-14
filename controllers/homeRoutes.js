@@ -4,18 +4,14 @@ const withAuth = require("../utils/auth");
 
 // Routes the main page URL to the login page
 router.get("/", withAuth, async (req, res) => {
- 
   try {
-
-    res.render('homepage', {  
-      logged_in: req.session.logged_in 
+    res.render("homepage", {
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
 
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -28,14 +24,14 @@ router.get("/login", (req, res) => {
 });
 
 // Find all books saved by logged-in user
-router.get("/user/books", withAuth, async (req, res) => {
+router.get("/api/books", async (req, res) => {
   // Get all books and JOIN with user data
   try {
     const booksData = await Books.findAll({
       include: [
         {
           model: Users,
-          attributes: ["name"],
+          attributes: ["user_name"],
         },
 
         // Do we need a where clause here to find which books are saved?
@@ -52,11 +48,10 @@ router.get("/user/books", withAuth, async (req, res) => {
   }
 });
 
-
 router.get("/profile", withAuth, async (req, res) => {
   try {
     const usersData = await Users.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ["password"] },
       include: [{ model: Books }],
     });
 
@@ -65,9 +60,8 @@ router.get("/profile", withAuth, async (req, res) => {
 
     res.render("profile", {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
-
   } catch (err) {
     res.status(500).json(err);
   }
