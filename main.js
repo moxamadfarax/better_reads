@@ -1,11 +1,16 @@
-var btn = document.getElementById("submitButton");
-var inputField = document.getElementById("inputField");
-var nextBtn = document.getElementById("nextBtn");
-var previousBtn = document.getElementById("previousBtn");
+let btn = document.getElementById("submitButton");
+let inputField = document.getElementById("inputField");
+let nextBtn = document.getElementById("nextBtn");
+let previousBtn = document.getElementById("previousBtn");
 
-var startIndex = 0;
-var totalItems = 0;
-var itemsPerPage = 35;
+let startIndex = 0;
+let totalItems = 0;
+let itemsPerPage = 36;
+
+bookData = [];
+
+nextBtn.style.display = "none";
+previousBtn.style.display = "none";
 
 async function getData(query, startIndex) {
   const apiKey = "AIzaSyD78Ix8MA22TZKPmBeVZpTmWtIzQPcPxwY";
@@ -13,6 +18,8 @@ async function getData(query, startIndex) {
   const endpoint = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&maxResults=${maxResults}&key=${apiKey}`;
   const response = await fetch(endpoint);
   const data = await response.json();
+
+  bookData = [];
 
   if (data.items) {
     const resultsContainer = document.getElementById("resultsContainer");
@@ -23,6 +30,16 @@ async function getData(query, startIndex) {
         item.volumeInfo.hasOwnProperty("imageLinks") &&
         item.volumeInfo.imageLinks.hasOwnProperty("thumbnail")
       ) {
+        const bookInfo = {
+          title: item.volumeInfo.title,
+          authors: item.volumeInfo.authors,
+          description: item.volumeInfo.description,
+          bookLink: item.volumeInfo.infoLink,
+          publishedDate: item.volumeInfo.publishedDate,
+        };
+
+        bookData.push(bookInfo);
+
         const card = generateBookCard(item.volumeInfo);
 
         resultsContainer.appendChild(card);
@@ -33,7 +50,20 @@ async function getData(query, startIndex) {
     resultsContainer.innerHTML = "<p>No Results Found</p>";
   }
 
-  return data.totalItems;
+  totalItems = data.totalItems;
+  if (startIndex === 0) {
+    previousBtn.style.display = "none";
+  } else {
+    previousBtn.style.display = "inline-block";
+  }
+
+  if (totalItems - startIndex <= itemsPerPage) {
+    nextBtn.style.display = "none";
+  } else {
+    nextBtn.style.display = "inline-block";
+  }
+  console.log(bookData[0]);
+  return totalItems;
 }
 
 function generateBookCard(bookInfo) {
@@ -52,15 +82,29 @@ function generateBookCard(bookInfo) {
   const title = document.createElement("h5");
   title.classList.add("card-title");
   title.textContent = bookInfo.title;
+
+  const btnContainer = document.createElement("div");
+  btnContainer.classList.add("btn-group");
+  const deatailsBtn = document.createElement("button");
+  const bookmarkBtn = document.createElement("button");
+  deatailsBtn.classList.add("btn", "btn-secondary", "moreBtn");
+  bookmarkBtn.classList.add("btn", "btn-secondary", "moreBtn");
+  deatailsBtn.textContent = "Details";
+  bookmarkBtn.textContent = "Bookmark";
+
+  btnContainer.appendChild(deatailsBtn);
+  btnContainer.appendChild(bookmarkBtn);
+
   cardBody.appendChild(title);
 
   card.appendChild(cardBody);
+  card.appendChild(btnContainer);
 
   return card;
 }
 
 btn.addEventListener("click", function () {
-  var inputValue = inputField.value;
+  let inputValue = inputField.value;
   startIndex = 0;
   getData(inputValue, startIndex).then(() => {
     console.log("Finished retrieving book data");
@@ -83,3 +127,5 @@ inputField.addEventListener("keydown", function (event) {
     btn.click();
   }
 });
+
+module.exports = bookData;

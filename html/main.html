@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -61,22 +62,20 @@
       <div
         class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
         id="resultsContainer"
-      >
-        <!-- generated book cards will be added here -->
-      </div>
+      ></div>
     </div>
-
+    <br /><br />
     <div class="text-center">
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-secondary" id="previousBtn">
-          Previous
+        <button type="button" class="btn btn-secondary hidden" id="previousBtn">
+          Previous Page
         </button>
-        <button type="button" class="btn btn-secondary" id="nextBtn">
-          Next
+        <div class="mx-1"></div>
+        <button type="button" class="btn btn-secondary hidden" id="nextBtn">
+          Next Page
         </button>
       </div>
     </div>
-
-    <script src="/testAPI.js"></script>
+    <script src="/main.js"></script>
   </body>
 </html>
