@@ -72,11 +72,11 @@ async function getData(query, startIndex) {
       const book = bookData[bookIndex];
       savedBooks.push(book);
       console.log("Bookmark button clicked for book:", book);
+      console.log(savedBooks);
       bookmarkBtns[i].disabled = true;
       bookmarkBtns[i].innerHTML = "Bookmarked";
     });
   }
-  console.log(savedBooks);
   return totalItems;
 }
 
