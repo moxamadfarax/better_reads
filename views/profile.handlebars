@@ -8,5 +8,15 @@
     <div id="profilecard">
         <div id="profileheader">{{user_name}}</div>
         <div id ="profileinfo">User bio?</div>
+        {{#each books as |book| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      {{book.book_title}}
+    </h2>
+
+  </div>
+</div>
+{{/each}}
     </div>
 </section>

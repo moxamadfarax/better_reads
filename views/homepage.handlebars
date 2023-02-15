@@ -1,18 +1,11 @@
 
-{{#each projects as |project| }}
+{{#each books as |book| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
-      <a href="/project/{{Book.id}}"</a>
+      {{book.book_title}}
     </h2>
-    <p>
-      <span>{{book_list}}</span>
-    </p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{Book.description}}
-    </p>
+
   </div>
 </div>
 {{/each}}
@@ -24,6 +17,5 @@
         <input type="text" id="searchbar"/>
 </section>
 
-{{#each books as |books| }}
-{{/each}}
+
 
