@@ -1,5 +1,19 @@
+
 body {
   background-color: rgb(229, 229, 229);
+=======
+* {
+  background-color: rgb(65, 64, 64);
+}
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #0dcaf0;
+  color: white;
+  width: 300px;
+  margin-bottom: 20px;
+
 }
 .navbar {
   background-color: rgb(147, 147, 147);
@@ -34,6 +48,7 @@ body {
   height: 90%;
   object-fit: cover;
 }
+
 .card-title {
   margin-top: -10px;
   font-size: 14px;
@@ -98,3 +113,16 @@ a {
 #resultsContainer p {
   text-align: center;
 }
+=======
+.form {
+  position: relative;
+  text-align: center;
+  
+}
+.betterbtn {
+  position: relative;
+  text-align: center;
+  
+}
+
+
