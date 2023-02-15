@@ -1,7 +1,18 @@
-let btn = document.getElementById("submitButton");
-let inputField = document.getElementById("inputField");
-let nextBtn = document.getElementById("nextBtn");
-let previousBtn = document.getElementById("previousBtn");
+const btn = document.getElementById("submitButton");
+const inputField = document.getElementById("inputField");
+const nextBtn = document.getElementById("nextBtn");
+const previousBtn = document.getElementById("previousBtn");
+const showDetailsButton = document.getElementById("showDetailsButton");
+const displayBtn = document.getElementById("displayBtn");
+const bookTitle = document.getElementById("bookTitle");
+const bookTitle2 = document.getElementById("bookTitle2");
+const bookCover = document.getElementById("bookCover");
+const bookAuthor = document.getElementById("bookAuthor");
+const bookLink = document.getElementById("bookLink");
+const bookDesc = document.getElementById("bookDesc");
+const bookPub = document.getElementById("bookPub");
+const bookRating = document.getElementById("bookRating");
+myModal = document.getElementById("details");
 
 let startIndex = 0;
 let totalItems = 0;
@@ -38,6 +49,8 @@ async function getData(query, startIndex) {
           description: item.volumeInfo.description,
           bookLink: item.volumeInfo.infoLink,
           publishedDate: item.volumeInfo.publishedDate,
+          bookCover: item.volumeInfo.imageLinks.thumbnail,
+          bookRating: item.volumeInfo.averageRating,
         };
 
         bookData.push(bookInfo);
@@ -50,6 +63,8 @@ async function getData(query, startIndex) {
   } else {
     const resultsContainer = document.getElementById("resultsContainer");
     resultsContainer.innerHTML = "<p>No Results Found</p>";
+    nextBtn.style.display = "none";
+    previousBtn.style.display = "none";
   }
 
   totalItems = data.totalItems;
@@ -71,12 +86,12 @@ async function getData(query, startIndex) {
       const bookIndex = i;
       const book = bookData[bookIndex];
       savedBooks.push(book);
-      console.log("Bookmark button clicked for book:", book);
-      console.log(savedBooks);
+
       bookmarkBtns[i].disabled = true;
       bookmarkBtns[i].innerHTML = "Bookmarked";
     });
   }
+
   return totalItems;
 }
 
@@ -97,6 +112,10 @@ function generateBookCard(bookInfo) {
   title.classList.add("card-title");
   title.textContent = bookInfo.title;
 
+  if (bookInfo.title.length > 25) {
+    title.style.fontSize = "0.8em";
+  }
+
   const btnContainer = document.createElement("div");
   btnContainer.classList.add("btn-group");
   const detailsBtn = document.createElement("button");
@@ -105,24 +124,39 @@ function generateBookCard(bookInfo) {
   bookmarkBtn.classList.add("btn", "btn-secondary", "moreBtn", "bookmarkBtn");
   detailsBtn.textContent = "Details";
   bookmarkBtn.textContent = "Bookmark";
+  detailsBtn.setAttribute("type", "button");
+
+  detailsBtn.setAttribute("data-bs-toggle", "modal");
+  detailsBtn.setAttribute("data-bs-target", "#detailsModal");
 
   btnContainer.appendChild(detailsBtn);
   btnContainer.appendChild(bookmarkBtn);
-
   cardBody.appendChild(title);
-
   card.appendChild(cardBody);
   card.appendChild(btnContainer);
 
+  detailsBtn.addEventListener("click", function () {
+    bookTitle.textContent = bookInfo.title;
+    bookTitle2.textContent = bookInfo.title;
+    bookCover.src = bookInfo.imageLinks.thumbnail;
+    bookAuthor.textContent = `By ${bookInfo.authors}`;
+    bookLink.textContent = "Read Here";
+    bookLink.setAttribute("href", bookInfo.infoLink);
+    bookDesc.textContent = bookInfo.description;
+    if (bookInfo.averageRating === undefined) {
+      bookRating.textContent = `This books rating is unavailable`;
+    } else {
+      bookRating.textContent = `This book has a rating of ${bookInfo.averageRating} stars`;
+    }
+    bookPub.textContent = `This book was published on ${bookInfo.publishedDate}`;
+  });
   return card;
 }
 
 btn.addEventListener("click", function () {
   let inputValue = inputField.value;
   startIndex = 0;
-  getData(inputValue, startIndex).then(() => {
-    console.log("Finished retrieving book data");
-  });
+  getData(inputValue, startIndex).then(() => {});
 });
 
 nextBtn.addEventListener("click", function () {

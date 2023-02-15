@@ -1,8 +1,8 @@
 // Get the modal
-var myModal = document.getElementById("exampleModal");
+myModal = document.getElementById("details");
 
 // Get the button that opens the modal
-var myButton = document.querySelector('button[data-bs-target="#exampleModal"]');
+var myButton = document.querySelector('button[data-bs-target="#details"]');
 
 // When the user clicks the button, open the modal
 myButton.addEventListener("click", function () {
