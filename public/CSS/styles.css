@@ -1,31 +1,48 @@
-input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid gray;
-  width: 300px;
-  margin-bottom: 20px;
+body {
+  background-color: rgb(229, 229, 229);
 }
-
-button {
-  padding: 10px 20px;
+.navbar {
+  background-color: rgb(147, 147, 147);
+  height: 75px;
+}
+.navbar-brand {
+  padding-left: 1rem;
+  font-size: 25px;
+}
+.nav-item {
+  font-size: 20px;
+  padding-right: 1rem;
+}
+.dropdown {
+  padding-left: 10px;
   border-radius: 5px;
-  background-color: lightblue;
-  color: white;
-  border: none;
-  cursor: pointer;
+  font-size: 18px;
 }
 .card {
   display: inline-block;
-  width: 200px;
-  height: 300px;
-  margin: 20px;
+  width: 250px;
+  height: 450px;
+  margin: 30px;
   border: 1px solid lightgray;
-  overflow: hidden;
+  padding-bottom: 50px;
 }
-
+.card-body {
+  text-align: center;
+}
 .card img {
   width: 100%;
-  height: 100%;
+  height: 90%;
   object-fit: cover;
+}
+.card-title {
+  margin-top: -10px;
+  font-size: 14px;
+}
+.moreBtn {
+  border-radius: 0px;
+  background-color: rgb(89, 89, 89);
+  border: 1px solid lightgray;
+  margin-top: 5px;
+  width: 125px;
+  margin-left: -12px;
 }

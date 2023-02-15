@@ -8,6 +8,7 @@ let totalItems = 0;
 let itemsPerPage = 36;
 
 bookData = [];
+savedBooks = [];
 
 nextBtn.style.display = "none";
 previousBtn.style.display = "none";
@@ -25,7 +26,8 @@ async function getData(query, startIndex) {
     const resultsContainer = document.getElementById("resultsContainer");
     resultsContainer.innerHTML = "";
 
-    for (let item of data.items) {
+    for (let i = 0; i < data.items.length; i++) {
+      const item = data.items[i];
       if (
         item.volumeInfo.hasOwnProperty("imageLinks") &&
         item.volumeInfo.imageLinks.hasOwnProperty("thumbnail")
@@ -40,7 +42,7 @@ async function getData(query, startIndex) {
 
         bookData.push(bookInfo);
 
-        const card = generateBookCard(item.volumeInfo);
+        const card = generateBookCard(item.volumeInfo, bookData.length - 1);
 
         resultsContainer.appendChild(card);
       }
@@ -62,7 +64,19 @@ async function getData(query, startIndex) {
   } else {
     nextBtn.style.display = "inline-block";
   }
-  console.log(bookData[0]);
+
+  const bookmarkBtns = document.getElementsByClassName("bookmarkBtn");
+  for (let i = 0; i < bookmarkBtns.length; i++) {
+    bookmarkBtns[i].addEventListener("click", function () {
+      const bookIndex = i;
+      const book = bookData[bookIndex];
+      savedBooks.push(book);
+      console.log("Bookmark button clicked for book:", book);
+      bookmarkBtns[i].disabled = true;
+      bookmarkBtns[i].innerHTML = "Bookmarked";
+    });
+  }
+  console.log(savedBooks);
   return totalItems;
 }
 
@@ -85,14 +99,14 @@ function generateBookCard(bookInfo) {
 
   const btnContainer = document.createElement("div");
   btnContainer.classList.add("btn-group");
-  const deatailsBtn = document.createElement("button");
+  const detailsBtn = document.createElement("button");
   const bookmarkBtn = document.createElement("button");
-  deatailsBtn.classList.add("btn", "btn-secondary", "moreBtn");
-  bookmarkBtn.classList.add("btn", "btn-secondary", "moreBtn");
-  deatailsBtn.textContent = "Details";
+  detailsBtn.classList.add("btn", "btn-secondary", "moreBtn", "detailsBtn");
+  bookmarkBtn.classList.add("btn", "btn-secondary", "moreBtn", "bookmarkBtn");
+  detailsBtn.textContent = "Details";
   bookmarkBtn.textContent = "Bookmark";
 
-  btnContainer.appendChild(deatailsBtn);
+  btnContainer.appendChild(detailsBtn);
   btnContainer.appendChild(bookmarkBtn);
 
   cardBody.appendChild(title);
@@ -127,5 +141,3 @@ inputField.addEventListener("keydown", function (event) {
     btn.click();
   }
 });
-
-module.exports = bookData;
