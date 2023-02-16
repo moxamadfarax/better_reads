@@ -2,8 +2,7 @@ const btn = document.getElementById("submitButton");
 const inputField = document.getElementById("inputField");
 const nextBtn = document.getElementById("nextBtn");
 const previousBtn = document.getElementById("previousBtn");
-const showDetailsButton = document.getElementById("showDetailsButton");
-const displayBtn = document.getElementById("displayBtn");
+
 const bookTitle = document.getElementById("bookTitle");
 const bookTitle2 = document.getElementById("bookTitle2");
 const bookCover = document.getElementById("bookCover");
@@ -25,12 +24,13 @@ previousBtn.style.display = "none";
 
 function addBook(book) {
   fetch(`/api/books`, {
-    method: 'POST',
-    body: JSON.stringify( book ),
+    method: "POST",
+    body: JSON.stringify(book),
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-  })};
+  });
+}
 
 async function getData(query, startIndex) {
   const apiKey = "AIzaSyD78Ix8MA22TZKPmBeVZpTmWtIzQPcPxwY";
@@ -96,16 +96,15 @@ async function getData(query, startIndex) {
 
       bookmarkBtns[i].disabled = true;
       bookmarkBtns[i].innerHTML = "Bookmarked";
+      console.log(book);
     });
   }
-
   return totalItems;
 }
 
 function generateBookCard(bookInfo) {
   const card = document.createElement("div");
   card.classList.add("card", "book-card");
-
   const coverImage = document.createElement("img");
   coverImage.classList.add("card-img-top");
   coverImage.src = bookInfo.imageLinks.thumbnail;

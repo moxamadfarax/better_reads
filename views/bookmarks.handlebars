@@ -1,21 +1,21 @@
 <section id="profiledisplay">
-    <div id="bookmarkscard">
-        <div id="bookmarksheader">Bookmarks List</div>
-        <ui id="bookmarklist">
-            <li>Sample book</li>
-        </ui>
-    </div>
-    <div id="profilecard">
-        <div id="profileheader">{{user_name}}</div>
-        {{#each books as |book| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      {{book.book_title}}
-    </h2>
-
+  <div id="bookmarkscard">
+    <div id="bookmarksheader">Bookmarks List</div>
+    <ui id="bookmarklist">
+      <li>Sample book</li>
+    </ui>
   </div>
-</div>
-{{/each}}
-    </div>
+  <div id="profilecard">
+    <div id="profileheader">{{user_name}}</div>
+    {{#each books as |book|}}
+      <div class="row mb-4 project">
+        <div class="col-md-5">
+          <h2>
+            {{book.book_title}}
+          </h2>
+
+        </div>
+      </div>
+    {{/each}}
+  </div>
 </section>
