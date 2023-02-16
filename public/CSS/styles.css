@@ -47,6 +47,12 @@ body {
   margin-top: -10px;
   font-size: 14px;
 }
+#buttonGroup {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .moreBtn {
   border-radius: 0px;
   background-color: rgb(89, 89, 89);
@@ -106,30 +112,27 @@ a {
   text-align: center;
 }
 .form {
- position:relative;
- text-align: center;
+  position: relative;
+  text-align: center;
 }
- #navBtn{
-display: inline-block;
+#navBtn {
+  display: inline-block;
   font-size: 20px;
   padding-right: 1px;
-background-color: rgb(147, 147, 147);
-border:  rgb(147, 147, 147);
-color:black;
-
+  background-color: rgb(147, 147, 147);
+  border: rgb(147, 147, 147);
+  color: black;
 }
-#logBtn{
-
+#logBtn {
   display: inline-block;
-
-  
-margin-top: 7px;
-
-
+  margin-top: 7px;
   font-size: 20px;
-background-color: rgb(147, 147, 147);
-border:  rgb(147, 147, 147);
-color:black;
-
+  background-color: rgb(147, 147, 147);
+  border: rgb(147, 147, 147);
+  color: black;
 }
-
+.paginatation {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}

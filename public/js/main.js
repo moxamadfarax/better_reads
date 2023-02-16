@@ -38,7 +38,6 @@ async function getData(query, startIndex) {
   const endpoint = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&maxResults=${maxResults}&key=${apiKey}`;
   const response = await fetch(endpoint);
   const data = await response.json();
-
   bookData = [];
 
   if (data.items) {
@@ -53,18 +52,43 @@ async function getData(query, startIndex) {
       ) {
         const bookInfo = {
           title: item.volumeInfo.title,
-          authors: item.volumeInfo.authors[0],
+          authors: Array.isArray(item.volumeInfo.authors)
+            ? item.volumeInfo.authors[0]
+            : null,
           description: item.volumeInfo.description,
           bookLink: item.volumeInfo.infoLink,
           publishedDate: item.volumeInfo.publishedDate,
           bookCover: item.volumeInfo.imageLinks.thumbnail,
           bookRating: item.volumeInfo.averageRating,
         };
+
+        // Check for missing data and log errors
+        if (!bookInfo.title) {
+          console.error(`Book #${i} is missing a title`);
+        }
+        if (!bookInfo.authors) {
+          console.error(`Book #${i} is missing an author`);
+        }
+        if (!bookInfo.description) {
+          console.error(`Book #${i} is missing a description`);
+        }
+        if (!bookInfo.publishedDate) {
+          console.error(`Book #${i} is missing a publication date`);
+        }
+        if (!bookInfo.bookCover) {
+          console.error(`Book #${i} is missing a book cover`);
+        }
+        if (!bookInfo.bookRating) {
+          console.error(`Book #${i} is missing a book rating`);
+        }
+
         bookData.push(bookInfo);
 
         const card = generateBookCard(item.volumeInfo, bookData.length - 1);
 
         resultsContainer.appendChild(card);
+      } else {
+        console.error(`Book #${i} is missing an image link`);
       }
     }
   } else {
@@ -93,12 +117,11 @@ async function getData(query, startIndex) {
       const bookIndex = i;
       const book = bookData[bookIndex];
       addBook(book);
-
       bookmarkBtns[i].disabled = true;
       bookmarkBtns[i].innerHTML = "Bookmarked";
-      console.log(book);
     });
   }
+  console.log(data);
   return totalItems;
 }
 
@@ -142,19 +165,50 @@ function generateBookCard(bookInfo) {
   card.appendChild(btnContainer);
 
   detailsBtn.addEventListener("click", function () {
-    bookTitle.textContent = bookInfo.title;
-    bookTitle2.textContent = bookInfo.title;
-    bookCover.src = bookInfo.imageLinks.thumbnail;
-    bookAuthor.textContent = `By ${bookInfo.authors}`;
-    bookLink.textContent = "Read Here";
-    bookLink.setAttribute("href", bookInfo.infoLink);
-    bookDesc.textContent = bookInfo.description;
-    if (bookInfo.averageRating === undefined) {
+    if (!bookInfo.title) {
+      bookTitle.textContent = `This books title is unavailable`;
+      bookTitle2.textContent = `This books title is unavailable`;
+    } else {
+      bookTitle.textContent = bookInfo.title;
+      bookTitle2.textContent = bookInfo.title;
+    }
+
+    if (!bookInfo.imageLinks.thumbnail) {
+      bookCover.setAttribute("alt", "Image Unavailable");
+    } else {
+      bookCover.src = bookInfo.imageLinks.thumbnail;
+    }
+
+    if (!bookInfo.authors) {
+      bookAuthor.textContent = `This book has no author beleive it or not`;
+    } else {
+      bookAuthor.textContent = `By ${bookInfo.authors}`;
+    }
+
+    if (!bookInfo.infoLink) {
+      bookLink.textContent = "Book Link Unavailable";
+    } else {
+      bookLink.textContent = "Read Here";
+      bookLink.setAttribute("href", bookInfo.infoLink);
+    }
+
+    if (!bookInfo.description) {
+      bookDesc.textContent = "This books description is unavailable";
+    } else {
+      bookDesc.textContent = bookInfo.description;
+    }
+
+    if (!bookInfo.averageRating) {
       bookRating.textContent = `This books rating is unavailable`;
     } else {
       bookRating.textContent = `This book has a rating of ${bookInfo.averageRating} stars`;
     }
-    bookPub.textContent = `This book was published on ${bookInfo.publishedDate}`;
+
+    if (!bookInfo.publishedDate) {
+      bookPub.textContent = "This books publish date is unavailable";
+    } else {
+      bookPub.textContent = `This book was published on ${bookInfo.publishedDate}`;
+    }
   });
   return card;
 }

@@ -31,17 +31,16 @@
 
           {{#if logged_in}}
             <li class="nav-item">
-              <button class="no-button" id="logBtn">logout</button>
+              <button class="no-button" id="logBtn">Logout</button>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="navBtn" href="/api/books">My Books</a>
             </li>
           {{else}}
             <li>
               <a href="/login"></a>
             </li>
           {{/if}}
-
-          <li class="nav-item">
-            <a class="nav-link" id="navBtn" href="/api/books">My Books</a>
-          </li>
         </ul>
       </div>
     </nav>
