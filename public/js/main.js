@@ -38,7 +38,6 @@ async function getData(query, startIndex) {
   const endpoint = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&maxResults=${maxResults}&key=${apiKey}`;
   const response = await fetch(endpoint);
   const data = await response.json();
-
   bookData = [];
 
   if (data.items) {
@@ -53,7 +52,9 @@ async function getData(query, startIndex) {
       ) {
         const bookInfo = {
           title: item.volumeInfo.title,
-          authors: item.volumeInfo.authors[0],
+          authors: Array.isArray(item.volumeInfo.authors)
+            ? item.volumeInfo.authors[0]
+            : null,
           description: item.volumeInfo.description,
           bookLink: item.volumeInfo.infoLink,
           publishedDate: item.volumeInfo.publishedDate,
@@ -93,10 +94,8 @@ async function getData(query, startIndex) {
       const bookIndex = i;
       const book = bookData[bookIndex];
       addBook(book);
-
       bookmarkBtns[i].disabled = true;
       bookmarkBtns[i].innerHTML = "Bookmarked";
-      console.log(book);
     });
   }
   return totalItems;
@@ -106,7 +105,7 @@ function generateBookCard(bookInfo) {
   const card = document.createElement("div");
   card.classList.add("card", "book-card");
   const coverImage = document.createElement("img");
-  coverImage.classList.add("card-img-top");
+  coverImage.classList.add("card-img-top", "card-gen");
   coverImage.src = bookInfo.imageLinks.thumbnail;
   coverImage.alt = bookInfo.title;
   card.appendChild(coverImage);
@@ -142,19 +141,37 @@ function generateBookCard(bookInfo) {
   card.appendChild(btnContainer);
 
   detailsBtn.addEventListener("click", function () {
-    bookTitle.textContent = bookInfo.title;
-    bookTitle2.textContent = bookInfo.title;
-    bookCover.src = bookInfo.imageLinks.thumbnail;
-    bookAuthor.textContent = `By ${bookInfo.authors}`;
-    bookLink.textContent = "Read Here";
-    bookLink.setAttribute("href", bookInfo.infoLink);
-    bookDesc.textContent = bookInfo.description;
-    if (bookInfo.averageRating === undefined) {
-      bookRating.textContent = `This books rating is unavailable`;
-    } else {
-      bookRating.textContent = `This book has a rating of ${bookInfo.averageRating} stars`;
-    }
-    bookPub.textContent = `This book was published on ${bookInfo.publishedDate}`;
+    bookTitle.textContent = bookInfo.title
+      ? bookInfo.title
+      : `This book's title is unavailable`;
+    bookTitle2.textContent = bookTitle.textContent;
+
+    bookCover.setAttribute(
+      "alt",
+      !bookInfo.imageLinks.thumbnail ? "Image Unavailable" : ""
+    );
+    bookCover.src = bookInfo.imageLinks.thumbnail || "";
+
+    bookAuthor.textContent = bookInfo.authors
+      ? `By ${bookInfo.authors}`
+      : `Unknown Author`;
+
+    bookLink.textContent = bookInfo.infoLink
+      ? "Read Here"
+      : "Book Link Unavailable";
+    bookLink.setAttribute("href", bookInfo.infoLink || "");
+
+    bookDesc.textContent = bookInfo.description
+      ? bookInfo.description
+      : "This book's description is unavailable";
+
+    bookRating.textContent = bookInfo.averageRating
+      ? `This book has a rating of ${bookInfo.averageRating} stars`
+      : `This book's rating is unavailable`;
+
+    bookPub.textContent = bookInfo.publishedDate
+      ? `This book was published on ${bookInfo.publishedDate}`
+      : `This book's publish date is unavailable`;
   });
   return card;
 }
@@ -181,11 +198,28 @@ inputField.addEventListener("keydown", function (event) {
     btn.click();
   }
 });
+const navbarToggler = document.querySelector(".navbar-toggler");
 
-const hamburgerButton = document.querySelector(".navbar-toggler");
-
+// Get the navbar collapse element
 const navbarCollapse = document.querySelector(".navbar-collapse");
 
-hamburgerButton.addEventListener("click", function () {
-  navbarCollapse.classList.toggle("collapse");
+const navLinks = document.getElementById("nav-links");
+
+// Add a click event listener to the navbar toggler button
+navbarToggler.addEventListener("click", function () {
+  // Toggle the show class on the navbar collapse element
+  navbarCollapse.classList.toggle("show");
+  navLinks.style.marginTop = "10px";
+  navLinks.style.paddingTop = "10px";
+  navLinks.style.display = "inline-block";
+  navLinks.style.backgroundColor = "rgb(147, 147, 147)";
+
+  // Add a blur event listener to the navbar toggler button
+  navbarToggler.addEventListener("blur", function () {
+    // Remove the styles that were added when the button was pressed
+    navLinks.style.marginTop = "";
+    navLinks.style.paddingTop = "";
+    navLinks.style.display = "";
+    navLinks.style.backgroundColor = "";
+  });
 });

@@ -28,10 +28,6 @@ Users.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_bio: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
   },
   {
     hooks: {

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/CSS/styles.css" />
     <title>Better Reads</title>
   </head>
-  <body style="padding-top: 70px">
+  <body>
     <nav class="navbar navbar-expand-lg fixed-top">
       <a class="navbar-brand" href="/">Home</a>
       <button
@@ -26,22 +26,26 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <div
+        class="collapse navbar-collapse navbar-links justify-content-end"
+        id="navbarNav"
+      >
         <ul class="navbar-nav ml-auto">
 
           {{#if logged_in}}
             <li class="nav-item">
-              <button class="no-button" id="logBtn">logout</button>
+              <a class="nav-link" id="navBtn" href="/api/books">My Books</a>
             </li>
+            <li class="nav-item">
+              <button class="no-button" id="logBtn">Logout</button>
+            </li>
+
           {{else}}
             <li>
               <a href="/login"></a>
             </li>
           {{/if}}
 
-          <li class="nav-item">
-            <a class="nav-link" id="navBtn" href="/api/books">My Books</a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -52,5 +56,6 @@
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
     {{/if}}
+    <script src="/js/deleteBtn.js"></script>
   </body>
 </html>

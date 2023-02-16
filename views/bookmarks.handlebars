@@ -1,23 +1,58 @@
 <section id="profiledisplay">
-    <div id="bookmarkscard">
-        <div id="bookmarksheader">Bookmarks List</div>
-        <ui id="bookmarklist">
-            <li>Sample book</li>
-        </ui>
-    </div>
-    <div id="profilecard">
-        <div id="profileheader">{{user_name}}</div>
-        {{#each books as |book| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      Title: {{title}} <br>
-      Author: {{authors}} <br>
-      Description: {{description}} <br>
-    </h2>
-
+  <header>
+    <h1 class="text-center viewFont">You can view your saved books below.</h1>
+  </header>
+  {{#each books as |book|}}
+    <div
+      class="d-flex flex-column justify-content-center align-items-center card-container mx-auto"
+    >
+      <div class="card mb-3" style="max-width: 100%">
+        <div class="row g-0 respond">
+          <div class="col-md-4">
+            <img
+              src="{{#if book_cover}}{{book_cover}}{{else}}/path/to/default-image.jpg{{/if}}"
+              class="img-fluid rounded-start bookmark-img w-100"
+              alt="..."
+               style="width: 200px; height: 500px; object-fit: cover"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <ul class="bookmark-info">
+                <li class="bookTitle" id="bookTitle2">{{#if title}}{{title}}{{else}}Unknown Title{{/if}}</li>
+                <br />
+                <li class="bookAuthor" id="bookAuthor">
+                  By {{#if authors}}{{authors}}{{else}}Unknown Author{{/if}}
+                </li>
+                <br />
+               <a id="bookLink" target="_blank" href="{{#if book_link}}{{book_link}}{{/if}}"><li class="bookLink">{{#if book_link}}Read Here{{/if}}</li></a><br />
+                
+                <li
+                  class="bookDesc"
+                  id="bookDesc"
+                  style="
+                    max-height: 150px;
+                    overflow: auto;
+                    overflow-wrap: break-word;
+                  "
+                >
+                  {{#if description}}{{description}}{{else}}No description available{{/if}}
+                </li>
+                <br />
+                <li class="publishDate" id="bookPub">
+                  {{#if published_date}}This book was published on {{published_date}}{{/if}}
+                </li>
+                <br />
+                <li id="bookRating" class="bookRating">
+                 {{#if book_rating}}This book has a rating of {{book_rating}} stars{{else}}This books rating is not available{{/if}}
+                </li>
+                
+                <li><button type="button" class="btn btn-danger" id="deleteBtn" data-bookid="{{books_id}}">Remove From Bookmarks</button></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    {{/each}}
-  </div>
+    </div>
+  {{/each}}
 </section>

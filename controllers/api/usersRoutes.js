@@ -1,8 +1,60 @@
 const router = require("express").Router();
 const { Users } = require("../../models");
+const _ = require("lodash");
+const validator = require("validator");
 
 // Creates a new user
 router.post("/", async (req, res) => {
+  console.log(req.body);
+  if (!validator.isEmail(req.body.user_email)) {
+    console.error("Invalid email address");
+    res.status(400).json({ message: "Invalid email address" });
+    return;
+  }
+
+  if (_.isEmpty(req.body.password)) {
+    console.error("Password is required");
+    res.status(400).json({ message: "Password is required" });
+    return;
+  }
+
+  if (!_.isString(req.body.password) || req.body.password.length < 8) {
+    console.error("Password must be at least 8 characters");
+    res.status(400).json({ message: "Password must be at least 8 characters" });
+    return;
+  }
+
+  if (!/[0-9]/.test(req.body.password)) {
+    console.error("Password must contain at least one number");
+    res
+      .status(400)
+      .json({ message: "Password must contain at least one number" });
+    return;
+  }
+
+  if (!/[a-z]/.test(req.body.password)) {
+    console.error("Password must contain at least one lowercase letter");
+    res.status(400).json({
+      message: "Password must contain at least one lowercase letter",
+    });
+    return;
+  }
+
+  if (!/[A-Z]/.test(req.body.password)) {
+    console.error("Password must contain at least one uppercase letter");
+    res.status(400).json({
+      message: "Password must contain at least one uppercase letter",
+    });
+    return;
+  }
+
+  if (!/[^a-zA-Z0-9]/.test(req.body.password)) {
+    console.error("Password must contain at least one special character");
+    res.status(400).json({
+      message: "Password must contain at least one special character",
+    });
+    return;
+  }
   try {
     const userData = await Users.create(req.body);
 
