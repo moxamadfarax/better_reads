@@ -1,4 +1,4 @@
-const { passwordStrength } = require("check-password-strength");
+const { passwordStrength } = require('../../node_modules/check-password-strength');
 
 let timeout;
 let password = document.getElementById("password-signup");
