@@ -24,7 +24,7 @@ router.get("/login", (req, res) => {
 });
 
 // Find all books saved by logged-in user
-router.get("/bookmarks", withAuth, async (req, res) => {
+router.get("/api/books", withAuth, async (req, res) => {
   // Get all books and JOIN with user data
   try {
     const booksData = await Books.findAll({
