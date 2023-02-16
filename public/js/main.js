@@ -61,34 +61,11 @@ async function getData(query, startIndex) {
           bookCover: item.volumeInfo.imageLinks.thumbnail,
           bookRating: item.volumeInfo.averageRating,
         };
-
-        // Check for missing data and log errors
-        if (!bookInfo.title) {
-          console.error(`Book #${i} is missing a title`);
-        }
-        if (!bookInfo.authors) {
-          console.error(`Book #${i} is missing an author`);
-        }
-        if (!bookInfo.description) {
-          console.error(`Book #${i} is missing a description`);
-        }
-        if (!bookInfo.publishedDate) {
-          console.error(`Book #${i} is missing a publication date`);
-        }
-        if (!bookInfo.bookCover) {
-          console.error(`Book #${i} is missing a book cover`);
-        }
-        if (!bookInfo.bookRating) {
-          console.error(`Book #${i} is missing a book rating`);
-        }
-
         bookData.push(bookInfo);
 
         const card = generateBookCard(item.volumeInfo, bookData.length - 1);
 
         resultsContainer.appendChild(card);
-      } else {
-        console.error(`Book #${i} is missing an image link`);
       }
     }
   } else {
@@ -121,7 +98,6 @@ async function getData(query, startIndex) {
       bookmarkBtns[i].innerHTML = "Bookmarked";
     });
   }
-  console.log(data);
   return totalItems;
 }
 
