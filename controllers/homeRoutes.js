@@ -24,7 +24,7 @@ router.get("/login", (req, res) => {
 });
 
 // Find all books saved by logged-in user
-router.get("/api/books", async (req, res) => {
+router.get("/books", async (req, res) => {
   // Get all books and JOIN with user data
   try {
     const booksData = await Books.findAll({
@@ -48,7 +48,7 @@ router.get("/api/books", async (req, res) => {
   }
 });
 
-router.get("/profile", withAuth, async (req, res) => {
+router.get("/bookmarks", withAuth, async (req, res) => {
   try {
     const usersData = await Users.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
@@ -58,7 +58,7 @@ router.get("/profile", withAuth, async (req, res) => {
     // Serialize data so the template can read it
     const user = usersData.get({ plain: true });
 
-    res.render("profile", {
+    res.render("bookmarks", {
       ...user,
       logged_in: true,
     });
