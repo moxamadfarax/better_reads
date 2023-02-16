@@ -1,5 +1,95 @@
 
-{{#each books as |book| }}
+ <div class="container mt-5">
+      <div class="input-group" style="width: 50%; margin: 0 auto">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search book by Title, Author, or ISBN Number"
+          id="inputField"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" id="submitButton" type="submit ">
+            Search
+          </button>
+        </div>
+      </div>
+      <br /><br />
+    </div>
+    <div class="container">
+      <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+        id="resultsContainer"
+      ></div>
+    </div>
+    <br /><br />
+    <div class="text-center">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-secondary hidden" id="previousBtn">
+          Previous Page
+        </button>
+        <div class="mx-1"></div>
+        <button type="button" class="btn btn-secondary hidden" id="nextBtn">
+          Next Page
+        </button>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="detailsModal"
+      tabindex="-1"
+      aria-labelledby="detailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="bookTitle"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <img id="bookCover" class="img-fluid" />
+              </div>
+              <div class="col-md-6">
+                <ul>
+                  <li class="bookTitle" id="bookTitle2"></li>
+                  <br />
+                  <li class="bookAuthor" id="bookAuthor"></li>
+                  <br />
+                  <a id="bookLink" target="_blank"><li></li></a>
+                  <br />
+                  <br />
+                  <li class="bookDesc" id="bookDesc"></li>
+                  <br />
+                  <li class="publishDate" id="bookPub"></li>
+                  <br />
+                  <li id="bookRating" class="bookRating"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="displayBtn" class="hidden">Display Modal</button>
+    <script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+{{!-- {{#each books as |book| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
@@ -15,7 +105,7 @@
         <h1>Enter book title, author name, or book id here: </h1>
     </header>
         <input type="text" id="searchbar"/>
-</section>
+</section> --}}
 
 
 
