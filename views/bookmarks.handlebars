@@ -13,6 +13,7 @@
               src="{{#if book_cover}}{{book_cover}}{{else}}/path/to/default-image.jpg{{/if}}"
               class="img-fluid rounded-start bookmark-img w-100"
               alt="..."
+               style="width: 200px; height: 500px; object-fit: cover"
             />
           </div>
           <div class="col-md-8">
@@ -24,8 +25,8 @@
                   By {{#if authors}}{{authors}}{{else}}Unknown Author{{/if}}
                 </li>
                 <br />
-               <a id="bookLink" target="_blank" href="{{#if book_link}}{{book_link}}{{/if}}"><li class="bookLin">{{#if book_link}}Read Here{{/if}}</li></a><br />
-                <br />
+               <a id="bookLink" target="_blank" href="{{#if book_link}}{{book_link}}{{/if}}"><li class="bookLink">{{#if book_link}}Read Here{{/if}}</li></a><br />
+                
                 <li
                   class="bookDesc"
                   id="bookDesc"
@@ -43,8 +44,10 @@
                 </li>
                 <br />
                 <li id="bookRating" class="bookRating">
-                 {{#if book_rating}}This book has a rating of {{book_rating}} stars{{/if}}
+                 {{#if book_rating}}This book has a rating of {{book_rating}} stars{{else}}This books rating is not available{{/if}}
                 </li>
+                <br>
+                <li><button type="button" class="btn btn-danger" id="deleteBtn" data-bookid="{{books_id}}">Remove From Bookmarks</button></li>
               </ul>
             </div>
           </div>

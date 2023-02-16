@@ -13,7 +13,6 @@ router.post("/", async (req, res) => {
       book_rating: req.body.bookRating,
       user_id: req.session.user_id,
     });
-    console.log(Books);
 
     res.status(200).json(newBook);
   } catch (err) {
