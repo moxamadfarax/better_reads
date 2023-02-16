@@ -15,7 +15,7 @@ BetterReads allows users to make an account to keep up with their favorite autho
 ![Search and bookmark example](public/img/Searched.png)
 
 ## Credits
-Work done by Andre Bessete, Shane Popowski, Gibson Berglund, Bredley Burnham, and Mohamed Farah.
+Work done by Andre Bessette, Shane Popowski, Gibson Berglund, Bredley Burnham, and Mohamed Farah.
 
 TA assistance from Jessica Guico
 
