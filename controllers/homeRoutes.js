@@ -24,18 +24,18 @@ router.get("/login", (req, res) => {
 });
 
 // Find all books saved by logged-in user
-router.get("/api/books", withAuth, async (req, res) => {
+router.get("/api/books", async (req, res) => {
   // Get all books and JOIN with user data
   try {
     const booksData = await Books.findAll({
-      include: [
-        {
-          model: Users,
-          attributes: ["user_name"],
-        },
+      // include: [
+      //   {
+      //     model: Users,
+      //     attributes: ["user_name"],
+      //   },
 
-        // Do we need a where clause here to find which books are saved?
-      ],
+      //   // Do we need a where clause here to find which books are saved?
+      // ],
     });
 
     // Serialize data so the template can read it
