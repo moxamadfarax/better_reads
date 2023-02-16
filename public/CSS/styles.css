@@ -106,14 +106,7 @@ a {
   position: relative;
   text-align: center;
 }
-#navBtn {
-  display: inline-block;
-  font-size: 20px;
-  padding-right: 1px;
-  background-color: rgb(147, 147, 147);
-  border: rgb(147, 147, 147);
-  color: black;
-}
+
 #logBtn {
   display: inline-block;
   margin-top: 7px;
