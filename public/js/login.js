@@ -28,6 +28,7 @@ const signupFormHandler = async (event) => {
   const user_name = document.querySelector("#name-signup").value.trim();
   const user_email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
+  let errMsg = document.querySelector('#invalidemailorpw');
 
   if (user_name && user_email && password) {
     const response = await fetch("/api/users", {
@@ -39,7 +40,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/");
     } else {
-      alert(response.statusText);
+      errMsg.setAttribute('class', 'errormsg');
     }
   }
 };

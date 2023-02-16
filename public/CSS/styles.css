@@ -110,12 +110,22 @@ a {
 
 #logBtn {
   display: inline-block;
-  margin-top: 7px;
+  padding-right:17px;
+  padding-top:6px;
   font-size: 20px;
   background-color: rgb(147, 147, 147);
   border: rgb(147, 147, 147);
   color: black;
 }
+#navBtn {
+  display: inline-block;
+  
+  font-size: 20px;
+  background-color: rgb(147, 147, 147);
+  border: rgb(147, 147, 147);
+  color: black;
+}
+
 
 .pag-btns {
   justify-content: center;
@@ -156,4 +166,17 @@ a {
 }
 .input-area {
   padding-top: 70px;
+}
+
+.errormsg {
+  display: inline;
+  margin-left: 15%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #0dcaf0;
+  color: black;
+  width: 300px;
+  margin-bottom: 20px;
+  background-color: rgba(205, 75, 75, 0.723);
 }
