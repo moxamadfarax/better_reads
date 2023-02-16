@@ -2,8 +2,7 @@ const btn = document.getElementById("submitButton");
 const inputField = document.getElementById("inputField");
 const nextBtn = document.getElementById("nextBtn");
 const previousBtn = document.getElementById("previousBtn");
-const showDetailsButton = document.getElementById("showDetailsButton");
-const displayBtn = document.getElementById("displayBtn");
+
 const bookTitle = document.getElementById("bookTitle");
 const bookTitle2 = document.getElementById("bookTitle2");
 const bookCover = document.getElementById("bookCover");
@@ -83,20 +82,17 @@ async function getData(query, startIndex) {
     bookmarkBtns[i].addEventListener("click", function () {
       const bookIndex = i;
       const book = bookData[bookIndex];
-      savedBooks.push(book);
-
       bookmarkBtns[i].disabled = true;
       bookmarkBtns[i].innerHTML = "Bookmarked";
+      console.log(book);
     });
   }
-
   return totalItems;
 }
 
 function generateBookCard(bookInfo) {
   const card = document.createElement("div");
   card.classList.add("card", "book-card");
-
   const coverImage = document.createElement("img");
   coverImage.classList.add("card-img-top");
   coverImage.src = bookInfo.imageLinks.thumbnail;

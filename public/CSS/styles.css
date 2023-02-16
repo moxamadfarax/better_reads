@@ -1,7 +1,7 @@
 body {
   background-color: rgb(229, 229, 229);
 }
-input[type="text"] {
+.form-input[type="text"] {
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;

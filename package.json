@@ -10,6 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/moxamadfarax/bookly.git"
   },
+   
+       
+        "type": "module",
+       
+ 
   "keywords": [],
   "author": "",
   "license": "ISC",
