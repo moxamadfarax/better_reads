@@ -109,12 +109,22 @@ a {
 
 #logBtn {
   display: inline-block;
-  margin-top: 7px;
+  padding-right:17px;
+  padding-top:6px;
   font-size: 20px;
   background-color: rgb(147, 147, 147);
   border: rgb(147, 147, 147);
   color: black;
 }
+#navBtn {
+  display: inline-block;
+  
+  font-size: 20px;
+  background-color: rgb(147, 147, 147);
+  border: rgb(147, 147, 147);
+  color: black;
+}
+
 
 .pag-btns {
   justify-content: center;
