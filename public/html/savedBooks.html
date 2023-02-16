@@ -46,16 +46,15 @@
       <h1 class="text-center viewFont">You can view your saved books below.</h1>
     </header>
     <div
-      class="d-flex flex-column justify-content-center align-items-center card-container"
+      class="d-flex flex-column justify-content-center align-items-center card-container mx-auto"
     >
-      <div class="card mb-3">
-        <div class="row g-0">
+      <div class="card mb-3" style="max-width: 100%">
+        <div class="row g-0 respond">
           <div class="col-md-4">
             <img
               src="http://books.google.com/books/content?id=tUioAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-              class="img-fluid rounded-start bookmark-img"
+              class="img-fluid rounded-start bookmark-img w-100"
               alt="..."
-              style="width: 500px"
             />
           </div>
           <div class="col-md-8">
@@ -78,7 +77,11 @@
                 <li
                   class="bookDesc"
                   id="bookDesc"
-                  style="max-height: 170px; overflow: auto"
+                  style="
+                    max-height: 170px;
+                    overflow: auto;
+                    overflow-wrap: break-word;
+                  "
                 >
                   Thinking about adding a second cat to the family? This
                   essential guide on managing multi-cat households will answer
