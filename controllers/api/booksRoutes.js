@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Books } = require("../../models");
-
 router.post("/", async (req, res) => {
   try {
     const existingBook = await Books.findOne({
@@ -13,7 +12,6 @@ router.post("/", async (req, res) => {
       res.status(400).json({ message: "This book is already bookmarked." });
       return;
     }
-
     const newBook = await Books.create({
       title: req.body.title,
       authors: req.body.authors,
@@ -24,13 +22,11 @@ router.post("/", async (req, res) => {
       book_rating: req.body.bookRating,
       user_id: req.session.user_id,
     });
-
     res.status(200).json(newBook);
   } catch (err) {
     res.status(400).json(err);
   }
 });
-
 router.delete("/:id", async (req, res) => {
   try {
     const bookData = await Books.destroy({
@@ -38,16 +34,13 @@ router.delete("/:id", async (req, res) => {
         books_id: req.params.id,
       },
     });
-
     if (!bookData) {
       res.status(404).json({ message: "No book found with this id!" });
       return;
     }
-
     res.status(200).json(bookData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
 module.exports = router;

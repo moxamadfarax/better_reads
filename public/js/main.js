@@ -73,6 +73,7 @@ async function getData(query, startIndex) {
     resultsContainer.innerHTML = "<p>No Results Found</p>";
     nextBtn.style.display = "none";
     previousBtn.style.display = "none";
+    return;
   }
 
   totalItems = data.totalItems;

@@ -9,6 +9,6 @@ Books.hasOne(Users, {
   foreignKey: "user_id",
 });
 
-
+Books.belongsTo(Users, { foreignKey: "user_id" });
 
 module.exports = { Users, Books };
