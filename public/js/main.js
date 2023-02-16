@@ -105,7 +105,7 @@ function generateBookCard(bookInfo) {
   const card = document.createElement("div");
   card.classList.add("card", "book-card");
   const coverImage = document.createElement("img");
-  coverImage.classList.add("card-img-top");
+  coverImage.classList.add("card-img-top", "card-gen");
   coverImage.src = bookInfo.imageLinks.thumbnail;
   coverImage.alt = bookInfo.title;
   card.appendChild(coverImage);
@@ -154,7 +154,7 @@ function generateBookCard(bookInfo) {
 
     bookAuthor.textContent = bookInfo.authors
       ? `By ${bookInfo.authors}`
-      : `This book has no author, believe it or not`;
+      : `Unknown Author`;
 
     bookLink.textContent = bookInfo.infoLink
       ? "Read Here"
@@ -197,12 +197,4 @@ inputField.addEventListener("keydown", function (event) {
     event.preventDefault();
     btn.click();
   }
-});
-
-const hamburgerButton = document.querySelector(".navbar-toggler");
-
-const navbarCollapse = document.querySelector(".navbar-collapse");
-
-hamburgerButton.addEventListener("click", function () {
-  navbarCollapse.classList.toggle("collapse");
 });

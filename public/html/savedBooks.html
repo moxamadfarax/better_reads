@@ -10,6 +10,7 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+
     <link rel="stylesheet" href="/public/css/styles.css" />
     <title>Better Reads</title>
   </head>
@@ -27,10 +28,13 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <div
+        class="collapse navbar-collapse navbar-links justify-content-end"
+        id="navbarNav"
+      >
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">My Books</a>
+            <a class="nav-link" href="/public/html/savedBooks.html">My Books</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Log Out</a>
@@ -39,30 +43,100 @@
       </div>
     </nav>
     <header>
-      <h1 class="text-center .fs-2 text">
-        You can view your saved books below.
-      </h1>
+      <h1 class="text-center viewFont">You can view your saved books below.</h1>
     </header>
-    <div class="card text-center mx-auto">
-      <div class="card-header">
-        <h5>My Card</h5>
-      </div>
-      <div class="card-body">
-        <div class="row">
+    <div
+      class="d-flex flex-column justify-content-center align-items-center card-container"
+    >
+      <div class="card mb-3">
+        <div class="row g-0">
           <div class="col-md-4">
-            <img src="https://via.placeholder.com/150" class="img-fluid" />
+            <img
+              src="http://books.google.com/books/content?id=tUioAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+              class="img-fluid rounded-start bookmark-img"
+              alt="..."
+              style="width: 500px"
+            />
           </div>
           <div class="col-md-8">
-            <p>This is some text on the right side of the card.</p>
+            <div class="card-body">
+              <ul class="bookmark-info">
+                <li class="bookTitle" id="bookTitle2">Cat vs. Cat</li>
+                <br />
+                <li class="bookAuthor" id="bookAuthor">
+                  By Pam Johnson-Bennett
+                </li>
+                <br />
+                <a
+                  id="bookLink"
+                  target="_blank"
+                  href="http://books.google.com/books?id=NVj6DwAAQBAJ&dq=Cat&hl=&source=gbs_api"
+                >
+                  <li class="bookLin">Read Here</li>
+                </a>
+                <br />
+                <li
+                  class="bookDesc"
+                  id="bookDesc"
+                  style="max-height: 170px; overflow: auto"
+                >
+                  Thinking about adding a second cat to the family? This
+                  essential guide on managing multi-cat households will answer
+                  all your questions and maybe even prevent a kitty
+                  apocalypse—now in an expanded and updated edition. America's
+                  favorite cat expert and award-winning author shows how adding
+                  another cat to your home does not have to be the start of a
+                  cat vs. cat war zone. Although cats are often misunderstood as
+                  natural loners, you can readily introduce new members to your
+                  family, and keep the fur from flying. Johnson-Bennett shows
+                  how to plan, set up, and maintain a home environment that will
+                  help multiple cats--and their owners--live in peace. Cat vs.
+                  Cat will help readers understand the importance of territory,
+                  the specialized communication cats use to establish
+                  relationships and hierarchies, and how to interpret the
+                  so-called "bad behavior" that leads so many owners to needless
+                  frustration. Offering a wealth of information on how to
+                  diffuse tension, prevent squabbles and ambushes, blend two
+                  families, or help the elder kitty in your family, Cat vs. Cat
+                  is a welcome resource for both seasoned and prospective
+                  guardians of cat families large and small. Thinking about
+                  adding a second cat to the family? This essential guide on
+                  managing multi-cat households will answer all your questions
+                  and maybe even prevent a kitty apocalypse—now in an expanded
+                  and updated edition. America's favorite cat expert and
+                  award-winning author shows how adding another cat to your home
+                  does not have to be the start of a cat vs. cat war zone.
+                  Although cats are often misunderstood as natural loners, you
+                  can readily introduce new members to your family, and keep the
+                  fur from flying. Johnson-Bennett shows how to plan, set up,
+                  and maintain a home environment that will help multiple
+                  cats--and their owners--live in peace. Cat vs. Cat will help
+                  readers understand the importance of territory, the
+                  specialized communication cats use to establish relationships
+                  and hierarchies, and how to interpret the so-called "bad
+                  behavior" that leads so many owners to needless frustration.
+                  Offering a wealth of information on how to diffuse tension,
+                  prevent squabbles and ambushes, blend two families, or help
+                  the elder kitty in your family, Cat vs. Cat is a welcome
+                  resource for both seasoned and prospective guardians of cat
+                  families large and small.
+                </li>
+                <br />
+                <li class="publishDate" id="bookPub">
+                  This book was published on 2020-09-01
+                </li>
+                <br />
+                <li id="bookRating" class="bookRating">
+                  This book has a rating of 4 stars
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <button id="displayBtn" class="hidden">Display Modal</button>
-    <script src="/public/js/main.js">
-      type="module"
-    </script>
+    <script src="/public/js/navBar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
   </body>
 </html>

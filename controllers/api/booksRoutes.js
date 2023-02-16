@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Books } = require("../../models");
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     const newBook = await Books.create({
       title: req.body.title,
@@ -14,7 +13,7 @@ router.post("/", async (req, res) => {
       book_rating: req.body.bookRating,
       user_id: req.session.user_id,
     });
-    console.log(newBook);
+    console.log(Books);
 
     res.status(200).json(newBook);
   } catch (err) {
