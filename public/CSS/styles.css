@@ -1,6 +1,15 @@
 body {
   background-color: rgb(229, 229, 229);
 }
+input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #0dcaf0;
+  color: white;
+  width: 300px;
+  margin-bottom: 20px;
+}
 .navbar {
   background-color: rgb(147, 147, 147);
   height: 75px;
@@ -67,7 +76,6 @@ li {
 .modal-lg {
   max-width: 50%;
 }
-
 a {
   text-decoration: none;
 }
@@ -93,4 +101,8 @@ a {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+#resultsContainer p {
+  text-align: center;
 }
