@@ -141,50 +141,37 @@ function generateBookCard(bookInfo) {
   card.appendChild(btnContainer);
 
   detailsBtn.addEventListener("click", function () {
-    if (!bookInfo.title) {
-      bookTitle.textContent = `This books title is unavailable`;
-      bookTitle2.textContent = `This books title is unavailable`;
-    } else {
-      bookTitle.textContent = bookInfo.title;
-      bookTitle2.textContent = bookInfo.title;
-    }
+    bookTitle.textContent = bookInfo.title
+      ? bookInfo.title
+      : `This book's title is unavailable`;
+    bookTitle2.textContent = bookTitle.textContent;
 
-    if (!bookInfo.imageLinks.thumbnail) {
-      bookCover.setAttribute("alt", "Image Unavailable");
-    } else {
-      bookCover.src = bookInfo.imageLinks.thumbnail;
-    }
+    bookCover.setAttribute(
+      "alt",
+      !bookInfo.imageLinks.thumbnail ? "Image Unavailable" : ""
+    );
+    bookCover.src = bookInfo.imageLinks.thumbnail || "";
 
-    if (!bookInfo.authors) {
-      bookAuthor.textContent = `This book has no author beleive it or not`;
-    } else {
-      bookAuthor.textContent = `By ${bookInfo.authors}`;
-    }
+    bookAuthor.textContent = bookInfo.authors
+      ? `By ${bookInfo.authors}`
+      : `This book has no author, believe it or not`;
 
-    if (!bookInfo.infoLink) {
-      bookLink.textContent = "Book Link Unavailable";
-    } else {
-      bookLink.textContent = "Read Here";
-      bookLink.setAttribute("href", bookInfo.infoLink);
-    }
+    bookLink.textContent = bookInfo.infoLink
+      ? "Read Here"
+      : "Book Link Unavailable";
+    bookLink.setAttribute("href", bookInfo.infoLink || "");
 
-    if (!bookInfo.description) {
-      bookDesc.textContent = "This books description is unavailable";
-    } else {
-      bookDesc.textContent = bookInfo.description;
-    }
+    bookDesc.textContent = bookInfo.description
+      ? bookInfo.description
+      : "This book's description is unavailable";
 
-    if (!bookInfo.averageRating) {
-      bookRating.textContent = `This books rating is unavailable`;
-    } else {
-      bookRating.textContent = `This book has a rating of ${bookInfo.averageRating} stars`;
-    }
+    bookRating.textContent = bookInfo.averageRating
+      ? `This book has a rating of ${bookInfo.averageRating} stars`
+      : `This book's rating is unavailable`;
 
-    if (!bookInfo.publishedDate) {
-      bookPub.textContent = "This books publish date is unavailable";
-    } else {
-      bookPub.textContent = `This book was published on ${bookInfo.publishedDate}`;
-    }
+    bookPub.textContent = bookInfo.publishedDate
+      ? `This book was published on ${bookInfo.publishedDate}`
+      : `This book's publish date is unavailable`;
   });
   return card;
 }
