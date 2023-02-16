@@ -56,11 +56,7 @@ body {
   width: 125px;
   margin-left: -12px;
 }
-@media (min-width: 768px) {
-  .modal-lg {
-    max-width: 50%;
-  }
-}
+
 li {
   list-style: none;
   font-size: 25px;
@@ -126,12 +122,16 @@ a {
   border: rgb(147, 147, 147);
   color: black;
 }
-#previousBtn,
-#nextBtn {
+
+.pag-btns {
   justify-content: center;
   border-radius: 7px;
-  margin-top: 260vh;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
 .viewFont {
   font-size: 30px;
   margin-top: 130px;

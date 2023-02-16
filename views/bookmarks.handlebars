@@ -31,7 +31,7 @@
                   class="bookDesc"
                   id="bookDesc"
                   style="
-                    max-height: 170px;
+                    max-height: 150px;
                     overflow: auto;
                     overflow-wrap: break-word;
                   "
@@ -46,7 +46,7 @@
                 <li id="bookRating" class="bookRating">
                  {{#if book_rating}}This book has a rating of {{book_rating}} stars{{else}}This books rating is not available{{/if}}
                 </li>
-                <br>
+                
                 <li><button type="button" class="btn btn-danger" id="deleteBtn" data-bookid="{{books_id}}">Remove From Bookmarks</button></li>
               </ul>
             </div>
