@@ -23,19 +23,19 @@ Books.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    bookLink: {
+    book_link: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    publishedDate: {
+    published_date: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    bookCover: {
+    book_cover: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    bookRating: {
+    book_rating: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
