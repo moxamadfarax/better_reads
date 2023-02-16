@@ -1,3 +1,5 @@
+/*
+
 let searchedBooks = document.querySelector('#searchdisplay');
 
 
@@ -26,3 +28,4 @@ const newBookHandler = async (event) => {
 
 
     _.sortBy(booksData, ['book', '']);
+    */
