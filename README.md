@@ -10,8 +10,9 @@
 ## Decription
 BetterReads allows users to make an account to keep up with their favorite authors and books associated, as well as bookmark read books.
 
-## Usage
-
+## Usage!
+![Login Page](public/img/login.png)
+![Search and bookmark example](public/img/Searched.png)
 
 ## Credits
 Work done by Andre Bessete, Shane Popowski, Gibson Berglund, Bredley Burnham, and Mohamed Farah.
