@@ -156,3 +156,16 @@ a {
 .input-area {
   padding-top: 70px;
 }
+
+.errormsg {
+  display: inline;
+  margin-left: 15%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #0dcaf0;
+  color: black;
+  width: 300px;
+  margin-bottom: 20px;
+  background-color: rgba(205, 75, 75, 0.723);
+}
