@@ -1,9 +1,5 @@
-
 body {
   background-color: rgb(229, 229, 229);
-=======
-* {
-  background-color: rgb(65, 64, 64);
 }
 input[type="text"] {
   padding: 10px;
@@ -13,7 +9,6 @@ input[type="text"] {
   color: white;
   width: 300px;
   margin-bottom: 20px;
-
 }
 .navbar {
   background-color: rgb(147, 147, 147);
@@ -48,7 +43,6 @@ input[type="text"] {
   height: 90%;
   object-fit: cover;
 }
-
 .card-title {
   margin-top: -10px;
   font-size: 14px;
@@ -82,7 +76,6 @@ li {
 .modal-lg {
   max-width: 50%;
 }
-
 a {
   text-decoration: none;
 }
@@ -109,20 +102,6 @@ a {
   justify-content: center;
   height: 100%;
 }
-
 #resultsContainer p {
   text-align: center;
 }
-=======
-.form {
-  position: relative;
-  text-align: center;
-  
-}
-.betterbtn {
-  position: relative;
-  text-align: center;
-  
-}
-
-
