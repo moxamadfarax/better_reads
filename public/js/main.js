@@ -22,6 +22,16 @@ savedBooks = [];
 nextBtn.style.display = "none";
 previousBtn.style.display = "none";
 
+function addBook(book) {
+  fetch(`/api/books`, {
+    method: "POST",
+    body: JSON.stringify(book),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
 async function getData(query, startIndex) {
   const apiKey = "AIzaSyD78Ix8MA22TZKPmBeVZpTmWtIzQPcPxwY";
   const maxResults = itemsPerPage;
@@ -43,7 +53,7 @@ async function getData(query, startIndex) {
       ) {
         const bookInfo = {
           title: item.volumeInfo.title,
-          authors: item.volumeInfo.authors,
+          authors: item.volumeInfo.authors[0],
           description: item.volumeInfo.description,
           bookLink: item.volumeInfo.infoLink,
           publishedDate: item.volumeInfo.publishedDate,
@@ -82,6 +92,8 @@ async function getData(query, startIndex) {
     bookmarkBtns[i].addEventListener("click", function () {
       const bookIndex = i;
       const book = bookData[bookIndex];
+      addBook(book);
+
       bookmarkBtns[i].disabled = true;
       bookmarkBtns[i].innerHTML = "Bookmarked";
       console.log(book);

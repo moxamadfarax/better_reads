@@ -6,7 +6,7 @@ body {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #0dcaf0;
-  color: white;
+  color: black;
   width: 300px;
   margin-bottom: 20px;
 }
@@ -105,3 +105,31 @@ a {
 #resultsContainer p {
   text-align: center;
 }
+.form {
+ position:relative;
+ text-align: center;
+}
+ #navBtn{
+display: inline-block;
+  font-size: 20px;
+  padding-right: 1px;
+background-color: rgb(147, 147, 147);
+border:  rgb(147, 147, 147);
+color:black;
+
+}
+#logBtn{
+
+  display: inline-block;
+
+  
+margin-top: 7px;
+
+
+  font-size: 20px;
+background-color: rgb(147, 147, 147);
+border:  rgb(147, 147, 147);
+color:black;
+
+}
+
