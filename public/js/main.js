@@ -20,7 +20,6 @@ let itemsPerPage = 36;
 
 bookData = [];
 savedBooks = [];
-
 nextBtn.style.display = "none";
 previousBtn.style.display = "none";
 
@@ -52,7 +51,6 @@ async function getData(query, startIndex) {
           bookCover: item.volumeInfo.imageLinks.thumbnail,
           bookRating: item.volumeInfo.averageRating,
         };
-
         bookData.push(bookInfo);
 
         const card = generateBookCard(item.volumeInfo, bookData.length - 1);
@@ -174,4 +172,12 @@ inputField.addEventListener("keydown", function (event) {
     event.preventDefault();
     btn.click();
   }
+});
+
+const hamburgerButton = document.querySelector(".navbar-toggler");
+
+const navbarCollapse = document.querySelector(".navbar-collapse");
+
+hamburgerButton.addEventListener("click", function () {
+  navbarCollapse.classList.toggle("collapse");
 });
