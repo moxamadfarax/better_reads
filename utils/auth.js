@@ -7,12 +7,4 @@ const withAuth = (req, res, next) => {
   }
 };
 
-const formatDate = (date) => {
-  const parts = date.split("-");
-  const month = parts[1];
-  const day = parts[2];
-  const year = parts[0];
-  return `${month}/${day}/${year}`;
-};
-
-module.exports = { withAuth, formatDate };
+module.exports = withAuth;
