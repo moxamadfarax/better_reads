@@ -2,8 +2,19 @@ const router = require("express").Router();
 const { Books } = require("../../models");
 
 router.post("/", async (req, res) => {
+  console.log(req.body);
   try {
-    const newBook = await Books.create(req.body);
+    const newBook = await Books.create({
+      title: req.body.title,
+      authors: req.body.authors,
+      description: req.body.description,
+      book_link: req.body.bookLink,
+      published_date: req.body.publishedDate,
+      book_cover: req.body.bookCover,
+      book_rating: req.body.bookRating,
+      user_id: req.session.user_id,
+    });
+    console.log(newBook);
 
     res.status(200).json(newBook);
   } catch (err) {

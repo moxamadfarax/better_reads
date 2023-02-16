@@ -11,20 +11,33 @@ Books.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    have_read: {
-      type: DataTypes.BOOLEAN,
+    title: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    book_issn: {
+    authors: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    bookLink: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    publishedDate: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    bookCover: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    bookRating: {
       type: DataTypes.INTEGER,
-    },
-    book_title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    buy_link: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     user_id: {
       type: DataTypes.INTEGER,
