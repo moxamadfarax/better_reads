@@ -32,7 +32,7 @@ function addBook(book) {
 }
 
 async function getData(query, startIndex) {
-  const apiKey = process.env.API_KEY;
+  const apiKey = "AIzaSyD78Ix8MA22TZKPmBeVZpTmWtIzQPcPxwY";
   const maxResults = itemsPerPage;
   const endpoint = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&maxResults=${maxResults}&key=${apiKey}`;
   const response = await fetch(endpoint);
