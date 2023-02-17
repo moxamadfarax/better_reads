@@ -2,7 +2,6 @@ const btn = document.getElementById("submitButton");
 const inputField = document.getElementById("inputField");
 const nextBtn = document.getElementById("nextBtn");
 const previousBtn = document.getElementById("previousBtn");
-
 const bookTitle = document.getElementById("bookTitle");
 const bookTitle2 = document.getElementById("bookTitle2");
 const bookCover = document.getElementById("bookCover");
@@ -33,7 +32,7 @@ function addBook(book) {
 }
 
 async function getData(query, startIndex) {
-  const apiKey = "AIzaSyD78Ix8MA22TZKPmBeVZpTmWtIzQPcPxwY";
+  const apiKey = process.env.API_KEY;
   const maxResults = itemsPerPage;
   const endpoint = `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&maxResults=${maxResults}&key=${apiKey}`;
   const response = await fetch(endpoint);
