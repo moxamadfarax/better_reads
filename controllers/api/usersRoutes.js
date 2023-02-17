@@ -11,6 +11,14 @@ router.post("/", async (req, res) => {
     res.status(400).json({ message: "Invalid email address" });
     return;
   }
+  const existingUser = await Users.findOne({
+    where: { user_email: req.body.user_email },
+  });
+  if (existingUser) {
+    console.error("Email is already in use");
+    res.status(400).json({ message: "Email is already in use" });
+    return;
+  }
 
   if (_.isEmpty(req.body.password)) {
     console.error("Password is required");
