@@ -2,10 +2,10 @@
   "name": "bookly",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/moxamadfarax/bookly/issues"
   },
@@ -28,7 +28,8 @@
     "express-handlebars": "^6.0.7",
     "express-session": "^1.17.3",
     "lodash": "^4.17.21",
-    "mysql2": "^3.1.2",
+    "mysql2": "^3.2.4",
+    "nodemon": "^2.0.22",
     "sequelize": "^6.28.0",
     "validator": "^13.9.0"
   }

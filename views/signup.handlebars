@@ -1,12 +1,16 @@
 <br /><br /><br /><br />
 
 <div class="main">
-  <h1 style="display : flex;  justify-content : center">Log In </h1>
-  <form class="login-form">
+  <h1 style="display : flex;  justify-content : center">Sign Up </h1>
+  <form class="signup-form">
     <h2 class="errMsg" id="errMsg"></h2>
     <div>
       <label for="email">Enter email:</label>
       <input type="text" id="email" />
+    </div>
+    <div>
+      <label for="username">Enter Username:</label>
+      <input type="text" id="username" />
     </div>
     <div>
       <label for="password">Enter Password:</label>
@@ -14,10 +18,10 @@
     </div>
     <button class="submit-btn" id="submitBtn">Submit</button>
     <p class="logInLink">
-      Don't have an account?
-      <a href="/signup">Sign In Here</a>
+      Already have an account?
+      <a href="/login">Sign In Here</a>
     </p>
   </form>
 </div>
 
-<script src="/js/login.js"></script>
+<script src="/js/signup.js"></script>

@@ -1,6 +1,11 @@
 <section id="profiledisplay">
   <header>
-    <h1 class="text-center viewFont">You can view your saved books below.</h1>
+    {{#if books}}
+  <h1 class="text-center viewFont">You can view your saved books below.</h1>
+    {{else}}
+       <h1 class="text-center viewFont">You currently have no saved books.</h1>
+       {{/if}}
+  
   </header>
   {{#each books as |book|}}
     <div

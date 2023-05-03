@@ -1,15 +1,6 @@
 body {
   background-color: rgb(229, 229, 229);
 }
-.form-input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #0dcaf0;
-  color: black;
-  width: 300px;
-  margin-bottom: 20px;
-}
 .navbar {
   background-color: rgb(147, 147, 147);
   height: 75px;
@@ -56,7 +47,39 @@ body {
   width: 125px;
   margin-left: -12px;
 }
-
+form {
+  width: 50%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+label,
+input[type="text"],
+input[type="password"],
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid gray;
+  resize: none;
+}
+.submit-btn {
+  padding: 10px 20px;
+  width: auto;
+  background-color: rgb(147, 147, 147);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 li {
   list-style: none;
   font-size: 25px;
@@ -101,10 +124,6 @@ a {
   height: 100%;
 }
 #resultsContainer p {
-  text-align: center;
-}
-.form {
-  position: relative;
   text-align: center;
 }
 
@@ -167,14 +186,11 @@ a {
   padding-top: 70px;
 }
 
-.errormsg {
-  display: inline;
+.errMsg {
   padding: 10px;
-  font-size: 16px;
   border-radius: 5px;
-  border: 1px solid #0dcaf0;
-  color: black;
-  width: 300px;
-  margin-bottom: 20px;
-  background-color: rgba(205, 75, 75, 0.723);
+  border: 2px solid rgb(215, 92, 92);
+  font-size: 20px;
+  color: rgb(200, 58, 58);
+  display: none;
 }

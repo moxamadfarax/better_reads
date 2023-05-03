@@ -3,7 +3,7 @@ const { Books, Users } = require("../models");
 const withAuth = require("../utils/auth");
 
 // Route the main page URL to the login page
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     res.render("homepage", {
       logged_in: req.session.logged_in,
@@ -20,6 +20,14 @@ router.get("/login", (req, res) => {
     return;
   }
   res.render("login");
+});
+router.get("/signup", (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect("/");
+    return;
+  }
+  res.render("signup");
 });
 
 // Find all books saved by logged-in user
