@@ -57,8 +57,9 @@ form {
   text-align: center;
 }
 label,
-input[type="text"],
-input[type="password"],
+#email,
+#username,
+#password,
 textarea {
   display: block;
   width: 100%;
