@@ -17,7 +17,6 @@ const loginFormHandler = async (event) => {
       // If success, redirect browser to dashboard page
       document.location.replace("/");
     } else {
-      console.log(responseBody.message);
       errMsg.style.display = "block";
       errMsg.textContent = responseBody.message;
     }

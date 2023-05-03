@@ -16,7 +16,6 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/");
     } else {
-      console.log(responseBody.message);
       errMsg.style.display = "block";
       errMsg.textContent = responseBody.message;
     }

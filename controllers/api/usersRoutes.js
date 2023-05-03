@@ -5,9 +5,7 @@ const validator = require("validator");
 
 // Creates a new user
 router.post("/", async (req, res) => {
-  console.log(req.body);
   if (!validator.isEmail(req.body.user_email)) {
-    console.error("Invalid email address");
     res.status(400).json({ message: "Invalid email address" });
     return;
   }
@@ -15,25 +13,16 @@ router.post("/", async (req, res) => {
     where: { user_email: req.body.user_email },
   });
   if (existingUser) {
-    console.error("Email is already in use");
     res.status(400).json({ message: "Email is already in use" });
     return;
   }
 
-  if (_.isEmpty(req.body.password)) {
-    console.error("Password is required");
-    res.status(400).json({ message: "Password is required" });
-    return;
-  }
-
   if (!_.isString(req.body.password) || req.body.password.length < 8) {
-    console.error("Password must be at least 8 characters");
     res.status(400).json({ message: "Password must be at least 8 characters" });
     return;
   }
 
   if (!/[0-9]/.test(req.body.password)) {
-    console.error("Password must contain at least one number");
     res
       .status(400)
       .json({ message: "Password must contain at least one number" });
@@ -41,7 +30,6 @@ router.post("/", async (req, res) => {
   }
 
   if (!/[a-z]/.test(req.body.password)) {
-    console.error("Password must contain at least one lowercase letter");
     res.status(400).json({
       message: "Password must contain at least one lowercase letter",
     });
@@ -49,7 +37,6 @@ router.post("/", async (req, res) => {
   }
 
   if (!/[A-Z]/.test(req.body.password)) {
-    console.error("Password must contain at least one uppercase letter");
     res.status(400).json({
       message: "Password must contain at least one uppercase letter",
     });
@@ -57,7 +44,6 @@ router.post("/", async (req, res) => {
   }
 
   if (!/[^a-zA-Z0-9]/.test(req.body.password)) {
-    console.error("Password must contain at least one special character");
     res.status(400).json({
       message: "Password must contain at least one special character",
     });
@@ -69,7 +55,6 @@ router.post("/", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.user_id;
       req.session.logged_in = true;
-
       res.status(200).json(userData);
     });
   } catch (err) {
