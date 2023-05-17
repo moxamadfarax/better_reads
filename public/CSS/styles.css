@@ -194,3 +194,11 @@ a {
   color: rgb(200, 58, 58);
   display: none;
 }
+#inputField {
+  font-size: 15px;
+}
+#submitButton {
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+  height: 47px;
+}

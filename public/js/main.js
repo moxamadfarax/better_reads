@@ -28,6 +28,10 @@ function addBook(book) {
     headers: {
       "Content-Type": "application/json",
     },
+  }).then((res) => {
+    if (res.status === 400) {
+      window.location.replace("/login");
+    }
   });
 }
 

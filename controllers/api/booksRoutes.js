@@ -1,8 +1,11 @@
 const router = require("express").Router();
 const { Books } = require("../../models");
-const withAuth = require("../../utils/auth");
 
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
+  if (!req.session.logged_in) {
+    res.status(400).json("login bud");
+    return;
+  }
   try {
     const existingBook = await Books.findOne({
       where: {
