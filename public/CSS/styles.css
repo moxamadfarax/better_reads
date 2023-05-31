@@ -202,3 +202,69 @@ a {
   border-bottom-left-radius: 0%;
   height: 47px;
 }
+#profiledisplay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+.card {
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.bookmark-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px 0 0 10px;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.bookmark-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bookTitle {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.bookAuthor {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.bookLink {
+  font-size: 16px;
+  color: blue;
+  text-decoration: underline;
+}
+
+.bookDesc {
+  max-height: 125px;
+  overflow: auto;
+  overflow-wrap: break-word;
+  font-size: 14px;
+}
+
+.publishDate {
+  font-size: 14px;
+}
+
+.bookRating {
+  font-size: 14px;
+}
+
+#deleteBtn {
+  margin-top: 10px;
+} */
