@@ -43,11 +43,14 @@
             </li>
 
           {{else}}
-            <li>
+            <li class="nav-item">
               <a href="/login" class="nav-link">Login</a>
             </li>
-            <li>
+            <li class="nav-item">
               <a href="/signup" class="nav-link">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link guest-button" id="guestId">Guest</button>
             </li>
           {{/if}}
 
@@ -60,7 +63,12 @@
     ></script>
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
+    {{else}}
+      <script src="/js/guest.js"></script>
     {{/if}}
     <script src="/js/deleteBtn.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.min.js"
+    ></script>
   </body>
 </html>

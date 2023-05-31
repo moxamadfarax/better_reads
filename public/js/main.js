@@ -213,17 +213,6 @@ const navLinks = document.getElementById("nav-links");
 navbarToggler.addEventListener("click", function () {
   // Toggle the show class on the navbar collapse element
   navbarCollapse.classList.toggle("show");
-  navLinks.style.marginTop = "10px";
-  navLinks.style.paddingTop = "10px";
-  navLinks.style.display = "inline-block";
-  navLinks.style.backgroundColor = "rgb(147, 147, 147)";
 
   // Add a blur event listener to the navbar toggler button
-  navbarToggler.addEventListener("blur", function () {
-    // Remove the styles that were added when the button was pressed
-    navLinks.style.marginTop = "";
-    navLinks.style.paddingTop = "";
-    navLinks.style.display = "";
-    navLinks.style.backgroundColor = "";
-  });
 });
